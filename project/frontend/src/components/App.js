@@ -1,11 +1,23 @@
-
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import DataProvider from "./DataProvider";
-import Table from "./Table";
-const App = () => (
-  <DataProvider endpoint="api/main/" 
-                render={data => <Table data={data} />} />
-);
-const wrapper = document.getElementById("app");
-wrapper ? ReactDOM.render(<App />, wrapper) : null;
+import {Route, Switch} from 'react-router-dom';
+
+import Landing from '../components/Landing/Landing';
+import Main from '../components/Main/Main';
+
+
+
+class App extends Component {
+    render(){
+        return(
+            <Switch>
+                <Route exact path='/'  component={Main} />
+                <Route path='/data' component={Landing} />        
+            </Switch>
+            
+        )
+    }  
+
+}
+
+export default App;
