@@ -5,3 +5,4 @@ node_modules/*
 project/frontend/__pycache__
 project/main/__pycache__
 project/project/__pycache__
+.env
