@@ -1,0 +1,11 @@
+pip install django djangorestframework
+python manage.py loaddata main
+#mkdir -p ./frontend/src/components
+#mkdir -p ./frontend/{static,templates}/frontend
+#cd ..
+npm init -y
+npm i webpack webpack-cli --save-dev #webpack and webpack cli
+npm i @babel/core babel-loader @babel/preset-env @babel/preset-react babel-plugin-transform-class-properties --save-dev #babel
+npm i react react-dom prop-types --save-dev #prop-types
+npm i weak-key --save-dev #weak-key
+npm run dev #run webpack
