@@ -4,7 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name="frontend/index.html")),
-    #path('data/', TemplateView.as_view(template_name="frontend/index.html")),
-    #path('data/', TemplateView.as_view(template_name="frontend/index.html")),
     path('data/', views.TweetLive),
 ]

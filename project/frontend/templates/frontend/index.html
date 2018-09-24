@@ -9,10 +9,20 @@
 <body>
   <section class="section">
     <div class="container">
-          <div id="app" class="columns"><!-- React --></div>
+          <div id="app" class='app'><!-- React --></div>
     </div>
   </section>
+  <!--
+  <script type="text/javascript">
+    window._DEFAULT_DATA = "{{context.near.text}}";
+    console.log(window._DEFAULT_DATA)
+    
+    
+  </script>
+  -->
+
+  {% load static %}
+  <script src="{% static 'frontend/main.js' %}"></script>  
 </body>
-{% load static %}
-<script src="{% static "frontend/main.js" %}"></script>
+
 </html>

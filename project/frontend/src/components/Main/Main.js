@@ -1,18 +1,22 @@
-import React, { Component } from "react";
-//import ReactDOM from "react-dom";
-import DataProvider from "../Main/DataProvider";
-import Table from "../Main/Table";
-
+import React, { Component } from 'react';
+import Aux from '../../hoc/Aux/Aux';
 class Main extends Component {
+    componentDidMount() {
+        //const data = JSON.parse(window._DEFAULT_DATA);
+        
+    }
+    
     render(){
-        return(
-            <DataProvider endpoint="api/main/" 
-            render={data => <Table data={data} />} />
+        return (
+            <Aux>
+            <div>
+                
+                <h1>data</h1>
+                
+            </div>
+            </Aux>
         )
     }
-
-
-
 }
 
 export default Main;

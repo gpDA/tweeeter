@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-
+import Aux from '../../hoc/Aux/Aux';
+//import LandingMain from './LandingMain';
+import MainBox from '../Landing/MainBox/MainBox';
 class Landing extends Component {
+    toMain = () => {
+        this.props.history.replace('/data/');
+    }
     
     render(){
         return (
-            <div>
+            <Aux>
 
-                <p>helloworld</p>
+                <MainBox main={this.toMain} />               
                 
-            </div>
+            </Aux>
         )
     }
 }
