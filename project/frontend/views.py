@@ -1,9 +1,5 @@
-from django.conf import settings
-from django.shortcuts import render
-import tweepy
-from tweepy.auth import OAuthHandler
-from . import handlingdata as hd
 
+"""
 def TweetLive(request):
     auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
     auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
@@ -148,3 +144,4 @@ def TweetLive(request):
 
     print(context)
     return render(request, 'frontend/index.html', {'context': context})     
+"""

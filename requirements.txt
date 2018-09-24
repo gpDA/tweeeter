@@ -18,3 +18,4 @@ npm install --save react-router
 npm install file-loader --save-dev
 npm install --save react-router-redux
 npm install url-loader file-loader --save-dev
+npm install --save prop-types

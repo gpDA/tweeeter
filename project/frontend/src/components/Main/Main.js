@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import Aux from '../../hoc/Aux/Aux';
+import DataProvider from '../Main/TweetModal/DataProvider';
+import TweetModal from '../Main/TweetModal/TweetModal';
+
 class Main extends Component {
-    componentDidMount() {
-        //const data = JSON.parse(window._DEFAULT_DATA);
-        
-    }
-    
     render(){
-        return (
+        return(
             <Aux>
-            <div>
-                
-                <h1>data</h1>
-                
-            </div>
+                <DataProvider exact endpoint="api/tweet/" 
+                render={data => <TweetModal data={data} />} />
             </Aux>
         )
     }
+
+
+
 }
 
 export default Main;

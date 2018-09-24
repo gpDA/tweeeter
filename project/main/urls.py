@@ -1,6 +1,7 @@
 from django.urls import path
+#from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    #path('api/main/', views.MainListCreate.as_view() ),
+    path('api/tweet/', views.TweetListCreate.as_view() ),
 ]
