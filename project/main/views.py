@@ -1,90 +1,143 @@
 from main.models import Main, Tweet
-from main.serializers import MainSerializer, TweetSerializer
-from rest_framework import generics, status
-from rest_framework.response import Response
+from main.serializers import TweetSerializer
+from . import handlingdata as hd
+
+from rest_framework.views import APIView
+from rest_framework import permissions, viewsets
+from django.http import JsonResponse
 from django.conf import settings
-from django.shortcuts import render
+
 import tweepy
 from tweepy.auth import OAuthHandler
-from . import handlingdata as hd
+
+#from tweepy import Stream
+#from tweepy.streaming import StreamListener
+
+
+"""
+STREAMING
+class MyStreamListener(StreamListener):
+    
+    def on_status(self, status):
+        #print(status)
+        text = status._json['text']
+        print(text)
+        created_at = status._json['created_at']
+        print(created_at)
+        uname = status._json['user']['name']
+        print(uname)
+        usname = status._json['user']['screen_name']
+        print(usname)
+        uimg = status._json['user']['profile_image_url']
+        print(uimg)        
+        return True
+
+    def on_error(self, status):
+        print(status)
 
 auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
 auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-context = {}
-context['near'] = {}
+#override tweepy.StreamListener to add logic to on_statusmyStreamListener = MyStreamListener()
+
+myStream = Stream(auth, MyStreamListener())
+myStream.filter(track=['#NYU'])
+"""
+
+
+
+
+"""
+in class (method)
+"""
+'''
+auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
+auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
+api = tweepy.API(auth, wait_on_rate_limit=True)
+
+data = tweepy.Cursor(api.search, q='#NYU', geocode="40.72942,-73.99721,1km")
+print(data)
+'''
+
+
+
+"""
+1. frontend calls for backend; call tweepy
+2. management command call to retrieve data
+
+build own manage.py 
+"""
+
+"""
+auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
+auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 for statusNEAR in tweepy.Cursor(api.search, q='#NYU', geocode="40.72942,-73.99721,1km").items(1):
     json_dataNEAR = (statusNEAR._json)
-    
-    nearTEXT_data = json_dataNEAR['text']
-    nearNAME_data = json_dataNEAR['user']['name']
-    nearUSERNAME_data = json_dataNEAR['user']['screen_name']
-    nearLOCATION_data = json_dataNEAR['user']['location']
-    
+    print(json_dataNEAR)
+"""
 
-    nearCREATED_data = (json_dataNEAR['created_at'].split(" "))
-    nearMONTH_data = hd.dateConvert(nearCREATED_data[1])
-    nearDAY_data = nearCREATED_data[2]
-    nearHOUR_data = hd.hourConvert(nearCREATED_data[3][0:2])
-    nearMIN_data = nearCREATED_data[3][3:5]
-    nearYEAR_data = nearCREATED_data[5]
-    nearRETWEET_data = json_dataNEAR['retweet_count'] #retweet_count
-    nearFAVORITE_data = json_dataNEAR['favorite_count'] #favorite_count
-    nearIMGURL_data = json_dataNEAR['user']['profile_image_url'] #    
 
-    context['near']['text'] = nearTEXT_data
-    context['near']['name'] = nearNAME_data
-    context['near']['username'] = nearUSERNAME_data
-    context['near']['location'] = nearLOCATION_data
-    context['near']['month'] = nearMONTH_data
-    context['near']['day'] = nearDAY_data
-    context['near']['hour'] = nearHOUR_data
-    context['near']['min'] = nearMIN_data
-    context['near']['year'] = nearYEAR_data
-    context['near']['retweet'] = nearRETWEET_data
-    context['near']['favorite'] = nearFAVORITE_data
-    context['near']['imgurl'] = nearIMGURL_data    
 
-class MainListCreate(generics.ListCreateAPIView):
-    queryset = Main.objects.all()
-    serializer_class = MainSerializer
+class TweetView(APIView):
+    permission_classes = (permissions.AllowAny,)
 
-class TweetListCreate(generics.ListCreateAPIView):
-    model = Tweet
+    def get(self, request, *args, **kwargs):
+        auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
+        auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
+        api = tweepy.API(auth, wait_on_rate_limit=True)
 
-    def get_serializer(self):
-        return TweetSerializer
-    
-    def get_queryset(self):
-        return Tweet.objects.all()
+        dic = {}
+        for statusNEAR in tweepy.Cursor(api.search, q='#NYU', geocode="40.72942,-73.99721,1km").items(1):
+            json_dataNEAR = (statusNEAR._json)
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.DATA)
-
+            print()
+            
+            nearTEXT_data = json_dataNEAR['text']
+            nearNAME_data = json_dataNEAR['user']['name']
+            nearUSERNAME_data = json_dataNEAR['user']['screen_name']
+            nearLOCATION_data = json_dataNEAR['user']['location']
+            nearCREATED_data = (json_dataNEAR['created_at'].split(" "))
+            nearMONTH_data = hd.dateConvert(nearCREATED_data[1])
+            nearDAY_data = nearCREATED_data[2]
+            nearHOUR_data = hd.hourConvert(nearCREATED_data[3][0:2])
+            nearMIN_data = nearCREATED_data[3][3:5]
+            nearYEAR_data = nearCREATED_data[5]
+            nearRETWEET_data = json_dataNEAR['retweet_count'] #retweet_count
+            nearFAVORITE_data = json_dataNEAR['favorite_count'] #favorite_count
+            nearIMGURL_data = json_dataNEAR['user']['profile_image_url'] #    
+        
+            dic = {'type': 'near', 'text': nearTEXT_data, 'name': nearNAME_data,
+                'username': nearUSERNAME_data, 'location': nearLOCATION_data, 'month': nearMONTH_data,
+                'day': nearDAY_data, 'hour': nearHOUR_data, 'min': nearMIN_data, 'year': nearYEAR_data,
+                'retweet': nearRETWEET_data, 'favorite': nearFAVORITE_data, 'img': nearIMGURL_data
+                }
         
 
-        if not serializer.is_valid():
-            return Response(
-                serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-            tweet = Tweet.objects.create(
-                type= 'near',
-                text = context['near']['text'],
-                name = context['near']['name'],
-                username = context['near']['username'],
-                location = context['near']['location'],
-                
-                month = context['near']['month'],
-                day = context['near']['day'],
-                hour = context['near']['hour'],
-                min = context['near']['min'],
-                year = context['near']['year'],
-                retweet = context['near']['retweet'],
-                favorite = context['near']['favorite'],
-                img = context['near']['imgurl']
+        """
+        Tweet.objects.create(
+            type = 'type', text = 'text', name = 'name',
+            username = 'username', location = 'location', month = 'month',
+            day = 'day', hour = 'hour', min = 'min',
+            year = 'year', retweet = 'retweet', favorite = 'favorite',
+            img = 'img'
         )
-        result = TweetSerializer(tweet)
-        return Response(result.data, status=status.HTTP_201_CREATED)
+        """
+        
+        Tweet.objects.create(
+            type = dic['type'], text = dic['text'], name = dic['name'],
+            username = dic['username'], location = dic['location'], month = dic['month'],
+            day = dic['day'], hour = dic['hour'], min = dic['min'],
+            year = dic['year'], retweet = dic['retweet'], favorite = dic['favorite'],
+            img = dic['img']
+        )
+        result = []
+        result.append(dic)
+        return JsonResponse(result)
 
-    
+    #Tweet.objects.create()
+
+    #REST FRAMEWORK ; react calls api / 
+    #frontend -> backend
+    #frontend calling 

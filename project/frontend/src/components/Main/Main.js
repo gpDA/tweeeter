@@ -7,7 +7,7 @@ class Main extends Component {
     render(){
         return(
             <Aux>
-                <DataProvider exact endpoint="api/tweet/" 
+                <DataProvider endpoint="api/tweet/" 
                 render={data => <TweetModal data={data} />} />
             </Aux>
         )

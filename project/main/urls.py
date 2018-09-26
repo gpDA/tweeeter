@@ -3,5 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('api/tweet/', views.TweetListCreate.as_view() ),
+    path('api/tweet/', views.TweetView.as_view() ),
+    #path('api/stream/', views.MyStreamListener.as_view() ),
 ]

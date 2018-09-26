@@ -3,11 +3,7 @@ import PropTypes from "prop-types";
 import key from "weak-key";
 import Aux from '../../../hoc/Aux/Aux';
 const TweetModal = ({ data }) =>
-  !data.length ? (
-    <Aux>
-    <p>Nothing to show</p>
-    </Aux>
-  ) : (
+
     <Aux>
     <div className="column">
       <h2 className="subtitle">
@@ -30,7 +26,6 @@ const TweetModal = ({ data }) =>
       </table>
     </div>
     </Aux>
-  );
 TweetModal.propTypes = {
   data: PropTypes.array.isRequired
 };

@@ -1,0 +1,8 @@
+#This is a script
+
+
+npm run dev
+
+python manage.py runserver
+
+

@@ -7,17 +7,19 @@ class Main(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Tweet(models.Model):
-    type = models.CharField(max_length = 300)
-    text = models.CharField(max_length = 1000)
-    name = models.CharField(max_length = 300)
-    username = models.CharField(max_length = 300)
-    location = models.CharField(max_length = 300)
-    month = models.CharField(max_length = 10)
-    day = models.IntegerField()
-    min =  models.IntegerField()
-    year =  models.IntegerField()
-    retweet =  models.IntegerField()
-    favorite =  models.IntegerField()
+    type = models.CharField(max_length = 300, default='type')
+    text = models.CharField(max_length = 1000, default='text')
+    name = models.CharField(max_length = 300, default='name')
+    username = models.CharField(max_length = 300, default='username')
+    location = models.CharField(max_length = 300, default='location')
+    month = models.CharField(max_length = 10, default='month')
+    hour = models.CharField(max_length = 300, default='hour')
+    day = models.CharField(max_length = 300, default='day')
+    min =  models.CharField(max_length = 300, default='min')
+    year =  models.CharField(max_length = 300, default='year')
+    retweet =  models.CharField(max_length = 300, default='retweet')
+    favorite =  models.CharField(max_length = 300, default='favorite')
     img =  models.TextField(max_length = 500)
 
-
+    def __str__(self):
+        return "{}".format(self.type)

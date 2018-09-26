@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+console.log(data);
 class DataProvider extends Component {
   static propTypes = {
     endpoint: PropTypes.string.isRequired,
@@ -15,12 +16,12 @@ class DataProvider extends Component {
     fetch(this.props.endpoint)
       .then(response => {
         if (response.status !== 200) {
-          return this.setState({ placeholder: "Something went wrong" });
+          return this.setState({ placeholder: "Something went wrong" }, console.log('not working?'));
         }
         return response.json();
       })
-      .then(data => this.setState({ data: data, loaded: true }));
-  }
+      .then(data => this.setState({ data: data, loaded: true }, console.log('working fine but...',this.state.data)));
+  };
   render() {
     const { data, loaded, placeholder } = this.state;
     return loaded ? this.props.render(data) : <p>{placeholder}</p>;
