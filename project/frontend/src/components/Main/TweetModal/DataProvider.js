@@ -20,7 +20,7 @@ class DataProvider extends Component {
         }
         return response.json();
       })
-      .then(data => this.setState({ data: data, loaded: true }, console.log('working fine but...',this.state.data)));
+      .then(data => this.setState({ data: data, loaded: true }, console.log('working finethis.state.data')));
   };
   render() {
     const { data, loaded, placeholder } = this.state;
