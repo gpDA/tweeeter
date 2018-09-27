@@ -22,6 +22,7 @@ header {
 .container {
     width: 420px;
     max-height: 528px;
+    min-height: 528px;
     display: inline-block;
     margin: 2em;
     -webkit-border-radius: 8px;
@@ -113,6 +114,8 @@ header {
 .data {
     margin-top: .6em;
     color: #81878b; 
+    min-height: 6em;
+    max-height: 6em;    
 }
 .data li {
     width: 32%;
