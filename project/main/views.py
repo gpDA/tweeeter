@@ -91,7 +91,38 @@ class TweetView(APIView):
 
         
         dic = {}
-        result = []        
+        result = []
+
+
+        dicREC = {}
+        for statusREC in tweepy.Cursor(api.search, q='#NYU', result_type='recent').items(1):
+            json_dataREC = (statusREC._json)
+
+
+            recTEXT_data = json_dataREC['text']
+            recNAME_data = json_dataREC['user']['name']
+            recUSERNAME_data = json_dataREC['user']['screen_name']
+            recLOCATION_data = json_dataREC['user']['location']
+            recCREATED_data = (json_dataREC['created_at'].split(" "))
+            recDAY_data = hd.dateConvert(recCREATED_data[0])
+            recMONTH_data = recCREATED_data[1]
+            recDATE_data = recCREATED_data[2]
+            recHOUR_data = hd.hourConvert(recCREATED_data[3][0:2])
+            recMIN_data = recCREATED_data[3][3:5]
+            recYEAR_data = recCREATED_data[5]
+            recRETWEET_data = json_dataREC['retweet_count'] #retweet_count
+            recFAVORITE_data = json_dataREC['favorite_count'] #favorite_count
+            recIMGURL_data = json_dataREC['user']['profile_image_url'] #              
+
+            dicREC = {'type': 'recent', 'text': recTEXT_data, 'name': recNAME_data,
+                'username': recUSERNAME_data, 'location': recLOCATION_data, 'day': recDAY_data,
+                 'month': recMONTH_data, 'date': recDATE_data, 'hour': recHOUR_data, 'min': recMIN_data, 
+                 'year': recYEAR_data, 'retweet': recRETWEET_data, 'favorite': recFAVORITE_data, 
+                 'img': recIMGURL_data
+                }
+        dic['recent'] = dicREC
+
+
         dicPOP = {}
         for statusPOP in tweepy.Cursor(api.search, q='#NYU', result_type='popular').items(1):
             json_dataPOP = (statusPOP._json)
@@ -152,11 +183,13 @@ class TweetView(APIView):
 
         try:
             for ko, v0 in dic.items():
-                exists = Tweet.objects.get(text=v0['type'])
+                exists = Tweet.objects.get(text=v0['text'])
 
-            result.append(dic)
+            result.append(dicPOP)
+            result.append(dicNEAR)
+            result.append(dicREC)
+
             #exists = Tweet.objects.get(text=dic['text'])
-
             return JsonResponse(result, safe=False)
 
         except ObjectDoesNotExist:
@@ -169,7 +202,9 @@ class TweetView(APIView):
                 img = v0['img']
                 )
         
-            result.append(dic)
+            result.append(dicPOP)
+            result.append(dicNEAR)
+            result.append(dicREC)
             return JsonResponse(result, safe=False)
 
     #Tweet.objects.create()
