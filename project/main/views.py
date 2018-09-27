@@ -11,76 +11,6 @@ from django.core.exceptions import ObjectDoesNotExist
 import tweepy
 from tweepy.auth import OAuthHandler
 
-#from tweepy import Stream
-#from tweepy.streaming import StreamListener
-
-
-"""
-STREAMING
-class MyStreamListener(StreamListener):
-    
-    def on_status(self, status):
-        #print(status)
-        text = status._json['text']
-        print(text)
-        created_at = status._json['created_at']
-        print(created_at)
-        uname = status._json['user']['name']
-        print(uname)
-        usname = status._json['user']['screen_name']
-        print(usname)
-        uimg = status._json['user']['profile_image_url']
-        print(uimg)        
-        return True
-
-    def on_error(self, status):
-        print(status)
-
-auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
-auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
-api = tweepy.API(auth, wait_on_rate_limit=True)
-
-#override tweepy.StreamListener to add logic to on_statusmyStreamListener = MyStreamListener()
-
-myStream = Stream(auth, MyStreamListener())
-myStream.filter(track=['#NYU'])
-"""
-
-
-
-
-"""
-in class (method)
-"""
-'''
-auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
-auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
-api = tweepy.API(auth, wait_on_rate_limit=True)
-
-data = tweepy.Cursor(api.search, q='#NYU', geocode="40.72942,-73.99721,1km")
-print(data)
-'''
-
-
-
-"""
-1. frontend calls for backend; call tweepy
-2. management command call to retrieve data
-
-build own manage.py 
-"""
-
-"""
-auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
-auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
-api = tweepy.API(auth, wait_on_rate_limit=True)
-for statusNEAR in tweepy.Cursor(api.search, q='#NYU', geocode="40.72942,-73.99721,1km").items(1):
-    json_dataNEAR = (statusNEAR._json)
-    print(json_dataNEAR)
-"""
-
-
-
 class TweetView(APIView):
     permission_classes = (permissions.AllowAny,)
 
@@ -207,9 +137,3 @@ class TweetView(APIView):
             result.append(dicNEAR)
             result.append(dicREC)
             return JsonResponse(result, safe=False)
-
-    #Tweet.objects.create()
-
-    #REST FRAMEWORK ; react calls api / 
-    #frontend -> backend
-    #frontend calling 
