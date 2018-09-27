@@ -20,7 +20,8 @@ class Tweet(models.Model):
     year =  models.CharField(max_length = 300, default='year')
     retweet =  models.CharField(max_length = 300, default='retweet')
     favorite =  models.CharField(max_length = 300, default='favorite')
-    img =  models.TextField(max_length = 500)
+    img =  models.TextField(max_length = 500, default='img')
+    bg = models.TextField(max_length = 500, null=True, blank=True)
 
     def __str__(self):
         return "{}".format(self.type)

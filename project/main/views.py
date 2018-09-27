@@ -113,12 +113,13 @@ class TweetView(APIView):
             recRETWEET_data = json_dataREC['retweet_count'] #retweet_count
             recFAVORITE_data = json_dataREC['favorite_count'] #favorite_count
             recIMGURL_data = json_dataREC['user']['profile_image_url'] #              
+            recBGURL_data = json_dataREC['user']['profile_background_image_url'] #                            
 
             dicREC = {'type': 'recent', 'text': recTEXT_data, 'name': recNAME_data,
                 'username': recUSERNAME_data, 'location': recLOCATION_data, 'day': recDAY_data,
                  'month': recMONTH_data, 'date': recDATE_data, 'hour': recHOUR_data, 'min': recMIN_data, 
                  'year': recYEAR_data, 'retweet': recRETWEET_data, 'favorite': recFAVORITE_data, 
-                 'img': recIMGURL_data
+                 'img': recIMGURL_data, 'bg': recBGURL_data
                 }
         dic['recent'] = dicREC
 
@@ -142,12 +143,13 @@ class TweetView(APIView):
             popRETWEET_data = json_dataPOP['retweet_count'] #retweet_count
             popFAVORITE_data = json_dataPOP['favorite_count'] #favorite_count
             popIMGURL_data = json_dataPOP['user']['profile_image_url'] #              
+            popBGURL_data = json_dataPOP['user']['profile_background_image_url'] #                
 
             dicPOP = {'type': 'popular', 'text': popTEXT_data, 'name': popNAME_data,
                 'username': popUSERNAME_data, 'location': popLOCATION_data, 'day': popDAY_data,
                  'month': popMONTH_data, 'date': popDATE_data, 'hour': popHOUR_data, 'min': popMIN_data, 
                  'year': popYEAR_data, 'retweet': popRETWEET_data, 'favorite': popFAVORITE_data, 
-                 'img': popIMGURL_data
+                 'img': popIMGURL_data, 'bg': popBGURL_data
                 }
         dic['poular'] = dicPOP
 
@@ -155,7 +157,6 @@ class TweetView(APIView):
         dicNEAR = {}
         for statusNEAR in tweepy.Cursor(api.search, q='#NYU', geocode="40.72942,-73.99721,1km").items(1):
             json_dataNEAR = (statusNEAR._json)
-
             
             nearTEXT_data = json_dataNEAR['text']
             nearNAME_data = json_dataNEAR['user']['name']
@@ -171,19 +172,21 @@ class TweetView(APIView):
             nearRETWEET_data = json_dataNEAR['retweet_count'] #retweet_count
             nearFAVORITE_data = json_dataNEAR['favorite_count'] #favorite_count
             nearIMGURL_data = json_dataNEAR['user']['profile_image_url'] #    
+            nearBGURL_data = json_dataNEAR['user']['profile_background_image_url'] #    
         
             dicNEAR = {'type': 'near', 'text': nearTEXT_data, 'name': nearNAME_data,
                 'username': nearUSERNAME_data, 'location': nearLOCATION_data, 'day': nearDAY_data,
                  'month': nearMONTH_data, 'date': nearDATE_data, 'hour': nearHOUR_data, 'min': nearMIN_data, 
                  'year': nearYEAR_data, 'retweet': nearRETWEET_data, 'favorite': nearFAVORITE_data, 
-                 'img': nearIMGURL_data
+                 'img': nearIMGURL_data, 'bg': nearBGURL_data
                 }
 
         dic['near'] = dicNEAR
 
         try:
             for ko, v0 in dic.items():
-                exists = Tweet.objects.get(text=v0['text'])
+                existsN = Tweet.objects.get(name=v0['name'])
+                existsT = Tweet.objects.get(text=v0['text'])
 
             result.append(dicPOP)
             result.append(dicNEAR)
@@ -199,7 +202,7 @@ class TweetView(APIView):
                 username = v0['username'], location = v0['location'], day = v0['day'],
                 month = v0['month'], date = v0['date'], hour = v0['hour'], min = v0['min'],
                 year = v0['year'], retweet = v0['retweet'], favorite = v0['favorite'],
-                img = v0['img']
+                img = v0['img'], bg = v0['bg']
                 )
         
             result.append(dicPOP)
