@@ -20,8 +20,11 @@ class Tweet(models.Model):
     year =  models.CharField(max_length = 300, default='year')
     retweet =  models.CharField(max_length = 300, default='retweet')
     favorite =  models.CharField(max_length = 300, default='favorite')
-    img =  models.TextField(max_length = 500, default='img')
-    bg = models.TextField(max_length = 500, null=True, blank=True)
+    #django.db.utils.IntegrityError: NOT NULL constraint failed: main_tweet.background
+    background = models.URLField(max_length = 500, null=True, default='https://www.cbronline.com/wp-content/uploads/2016/06/twitter2.png')
+    img =  models.URLField(max_length = 500, default='https://yt3.ggpht.com/a-/AN66SAyn4D2lHHaONid5n_y_ZIsyInEUOoktizKFew=s900-mo-c-c0xffffffff-rj-k-no')
+    
+    
 
     def __str__(self):
         return "{}".format(self.type)

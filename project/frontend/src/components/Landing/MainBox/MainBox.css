@@ -61,6 +61,7 @@
 }
 .app{
     display: inline-block;
+    width: 100%;
 }
 .tweet{
     width: 238px;

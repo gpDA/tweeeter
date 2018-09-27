@@ -119,7 +119,7 @@ class TweetView(APIView):
                 'username': recUSERNAME_data, 'location': recLOCATION_data, 'day': recDAY_data,
                  'month': recMONTH_data, 'date': recDATE_data, 'hour': recHOUR_data, 'min': recMIN_data, 
                  'year': recYEAR_data, 'retweet': recRETWEET_data, 'favorite': recFAVORITE_data, 
-                 'img': recIMGURL_data, 'bg': recBGURL_data
+                 'img': recIMGURL_data, 'background': recBGURL_data
                 }
         dic['recent'] = dicREC
 
@@ -149,7 +149,7 @@ class TweetView(APIView):
                 'username': popUSERNAME_data, 'location': popLOCATION_data, 'day': popDAY_data,
                  'month': popMONTH_data, 'date': popDATE_data, 'hour': popHOUR_data, 'min': popMIN_data, 
                  'year': popYEAR_data, 'retweet': popRETWEET_data, 'favorite': popFAVORITE_data, 
-                 'img': popIMGURL_data, 'bg': popBGURL_data
+                 'img': popIMGURL_data, 'background': popBGURL_data
                 }
         dic['poular'] = dicPOP
 
@@ -178,7 +178,7 @@ class TweetView(APIView):
                 'username': nearUSERNAME_data, 'location': nearLOCATION_data, 'day': nearDAY_data,
                  'month': nearMONTH_data, 'date': nearDATE_data, 'hour': nearHOUR_data, 'min': nearMIN_data, 
                  'year': nearYEAR_data, 'retweet': nearRETWEET_data, 'favorite': nearFAVORITE_data, 
-                 'img': nearIMGURL_data, 'bg': nearBGURL_data
+                 'img': nearIMGURL_data, 'background': nearBGURL_data
                 }
 
         dic['near'] = dicNEAR
@@ -191,8 +191,6 @@ class TweetView(APIView):
             result.append(dicPOP)
             result.append(dicNEAR)
             result.append(dicREC)
-
-            #exists = Tweet.objects.get(text=dic['text'])
             return JsonResponse(result, safe=False)
 
         except ObjectDoesNotExist:
@@ -202,7 +200,7 @@ class TweetView(APIView):
                 username = v0['username'], location = v0['location'], day = v0['day'],
                 month = v0['month'], date = v0['date'], hour = v0['hour'], min = v0['min'],
                 year = v0['year'], retweet = v0['retweet'], favorite = v0['favorite'],
-                img = v0['img'], bg = v0['bg']
+                img = v0['img'], background = v0['background']
                 )
         
             result.append(dicPOP)
