@@ -12,7 +12,7 @@ class App extends Component {
         return(
             <Switch>
                 <Route exact path='/data' component={Landing} /> 
-                <Route path=''  component= {Main} />                
+                <Route path='/'  component= {Main} />                
                 
             </Switch>
             

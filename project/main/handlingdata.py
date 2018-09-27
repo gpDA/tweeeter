@@ -19,7 +19,6 @@ def dateConvert(date):
     
     return Rdata
         
-
 def hourConvert(hour):
     INThour = int(hour)
     Rdata = ''

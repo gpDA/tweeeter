@@ -14,6 +14,7 @@ class Tweet(models.Model):
     location = models.CharField(max_length = 300, default='location')
     month = models.CharField(max_length = 10, default='month')
     hour = models.CharField(max_length = 300, default='hour')
+    date = models.CharField(max_length = 300, default='day')
     day = models.CharField(max_length = 300, default='day')
     min =  models.CharField(max_length = 300, default='min')
     year =  models.CharField(max_length = 300, default='year')

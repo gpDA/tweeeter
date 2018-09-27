@@ -9,6 +9,4 @@ class MainSerializer(serializers.ModelSerializer):
 class TweetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tweet
-        fields = ('type', 'text', 'name', 'username',
-                    'location', 'month', 'day', 'min',
-                    'year','retweet','favorite','img')
+        exclude = []
