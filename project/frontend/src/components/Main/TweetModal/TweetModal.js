@@ -6,7 +6,7 @@ import Aux from '../../../hoc/Aux/Aux';
 const TweetModal = ({ data }) =>{
     return (<Aux>
           {data.map(el => {
-              //console.log(el);
+              console.log(el);
             return (
     <div className="container"> 
             

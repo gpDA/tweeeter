@@ -55,11 +55,15 @@ class TweetView(APIView):
 
 
         dicPOP = {}
-        for statusPOP in tweepy.Cursor(api.search, q='#NYU', result_type='popular').items(1):
+        print('json data?????')
+        for statusPOP in tweepy.Cursor(api.search, q='NYU', result_type='popular').items(1):
+            print(statusPOP, "statusPPPOOPPP")
             json_dataPOP = (statusPOP._json)
+            print('json data', json_dataPOP)
 
 
             popTEXT_data = json_dataPOP['text']
+            print(popTEXT_data)
             popNAME_data = json_dataPOP['user']['name']
             popUSERNAME_data = json_dataPOP['user']['screen_name']
             popLOCATION_data = json_dataPOP['user']['location']
@@ -81,7 +85,7 @@ class TweetView(APIView):
                  'year': popYEAR_data, 'retweet': popRETWEET_data, 'favorite': popFAVORITE_data, 
                  'img': popIMGURL_data, 'background': popBGURL_data
                 }
-        dic['poular'] = dicPOP
+        dic['popular'] = dicPOP
 
 
         dicNEAR = {}
@@ -113,27 +117,10 @@ class TweetView(APIView):
 
         dic['near'] = dicNEAR
 
-        try:
-            for ko, v0 in dic.items():
-                existsN = Tweet.objects.get(name=v0['name'])
-                existsT = Tweet.objects.get(text=v0['text'])
-
-            result.append(dicPOP)
-            result.append(dicNEAR)
-            result.append(dicREC)
-            return JsonResponse(result, safe=False)
-
-        except ObjectDoesNotExist:
-            for ko, v0 in dic.items():
-                Tweet.objects.create(
-                type = v0['type'], text = v0['text'], name = v0['name'],
-                username = v0['username'], location = v0['location'], day = v0['day'],
-                month = v0['month'], date = v0['date'], hour = v0['hour'], min = v0['min'],
-                year = v0['year'], retweet = v0['retweet'], favorite = v0['favorite'],
-                img = v0['img'], background = v0['background']
-                )
+        #print('dicPOP', dicPOP)
+        #print(dic)
         
-            result.append(dicPOP)
-            result.append(dicNEAR)
-            result.append(dicREC)
-            return JsonResponse(result, safe=False)
+        result.append(dicPOP)
+        result.append(dicNEAR)
+        result.append(dicREC)
+        return JsonResponse(result, safe=False)
