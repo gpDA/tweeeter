@@ -55,15 +55,12 @@ class TweetView(APIView):
 
 
         dicPOP = {}
-        print('json data?????')
         for statusPOP in tweepy.Cursor(api.search, q='NYU', result_type='popular').items(1):
-            print(statusPOP, "statusPPPOOPPP")
             json_dataPOP = (statusPOP._json)
-            print('json data', json_dataPOP)
 
 
             popTEXT_data = json_dataPOP['text']
-            print(popTEXT_data)
+            #print(popTEXT_data)
             popNAME_data = json_dataPOP['user']['name']
             popUSERNAME_data = json_dataPOP['user']['screen_name']
             popLOCATION_data = json_dataPOP['user']['location']

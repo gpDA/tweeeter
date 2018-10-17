@@ -18,9 +18,13 @@ header {
     display: inline-block;
     width: 100%;
 }
-  
+.twContainer{
+    min-height: 800px;
+    max-height: 800px;
+    width: auto;
+}
 .container {
-    width: 420px;
+    width: 300px;
     max-height: 528px;
     min-height: 528px;
     display: inline-block;
@@ -31,10 +35,10 @@ header {
     -o-border-radius: 8px;
     border-radius: 8px;
     padding-bottom: 1.5em;
-    background-color: #dde1e2;
-    -webkit-box-shadow: #bdc3c7 0 5px 5px;
-    -moz-box-shadow: #bdc3c7 0 5px 5px;
-    box-shadow: #bdc3c7 0 5px 5px; 
+    background-color: #e5f2fb;
+    -webkit-box-shadow: #e5f2fb 0 5px 5px;
+    -moz-box-shadow: #e5f2fb 0 5px 5px;
+    box-shadow: #e5f2fb 0 5px 5px; 
 }
   
 .bg {

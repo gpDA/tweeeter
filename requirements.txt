@@ -15,6 +15,7 @@ npm install --save-dev css-loader #css
 npm install style-loader --save-dev #style
 npm install --save react-router-dom
 npm install --save react-router
+npm install --save bootstrap # bootstrap
 npm install file-loader --save-dev
 npm install --save react-router-redux
 npm install url-loader file-loader --save-dev

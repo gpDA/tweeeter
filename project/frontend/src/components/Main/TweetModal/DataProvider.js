@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import TweetModal from '../TweetModal/TweetModal';
-
+import Aux from '../../../hoc/Aux/Aux';
+import './TweetModal.css';
 class DataProvider extends Component {
   static propTypes = {
     endpoint: PropTypes.string.isRequired,
@@ -28,7 +29,11 @@ class DataProvider extends Component {
     const { data, loaded, placeholder } = this.state;
     
     return loaded ? 
-        <TweetModal data={data} />
+    (<Aux>
+      <div className="twContainer">
+        <TweetModal data={data} />      
+      </div>
+    </Aux>)
         : (<p>{placeholder}</p>);
   }
 }

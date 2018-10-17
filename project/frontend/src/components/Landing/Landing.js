@@ -4,7 +4,7 @@ import Aux from '../../hoc/Aux/Aux';
 import MainBox from '../Landing/MainBox/MainBox';
 class Landing extends Component {
     toMain = () => {
-        this.props.history.replace('/');
+        this.props.history.replace('/data');
     }
     
     render(){

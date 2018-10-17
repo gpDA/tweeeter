@@ -8,6 +8,7 @@ const TweetModal = ({ data }) =>{
           {data.map(el => {
               console.log(el);
             return (
+
     <div className="container"> 
             
             <div className="heading"></div>
@@ -51,7 +52,7 @@ const TweetModal = ({ data }) =>{
                     {el.location} <br/>
                     {el.year} {el.month}. {el.date} at {el.hour} {el.min}                
                 </div>              
-            </div>                    
+            </div>                   
           )}
           )}
     </Aux>)}
