@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import TweetModal from '../TweetModal/TweetModal';
 import Aux from '../../../hoc/Aux/Aux';
+import Spinner from '../Spinner/Spinner'
 import './TweetModal.css';
 class DataProvider extends Component {
   static propTypes = {
@@ -12,7 +13,7 @@ class DataProvider extends Component {
   state = {
       data: [],
       loaded: false,
-      placeholder: "Loading..."
+      //placeholder: "Loading..."
     };
 
   componentDidMount() {
@@ -34,7 +35,7 @@ class DataProvider extends Component {
         <TweetModal data={data} />      
       </div>
     </Aux>)
-        : (<p>{placeholder}</p>);
+        : (<Spinner />);
   }
 }
 export default DataProvider;

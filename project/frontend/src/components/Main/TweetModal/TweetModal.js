@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import key from "weak-key";
+
 import './TweetModal.css';
 import Aux from '../../../hoc/Aux/Aux';
 const TweetModal = ({ data }) =>{
