@@ -1,0 +1,8 @@
+.btn-default{
+    border: 1.5px solid #57068c;
+    margin: 0px 0.1em;
+}
+.bts{
+    display: flex;
+    justify-content: center;
+}
