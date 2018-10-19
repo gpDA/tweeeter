@@ -151,6 +151,7 @@ header {
 }
   
 .desc {
+    overflow: hidden;
     top: 0;
     background-color: #fff;
     width: 100%;

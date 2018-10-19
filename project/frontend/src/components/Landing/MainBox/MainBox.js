@@ -4,7 +4,7 @@ import './MainBox.css';
 import Aux from '../../../hoc/Aux/Aux';
 import nyuLogo from '../../../assets/school.png';
 import twitterLogo from '../../../assets/twitter.png';
-//import { Button } from 'reactstrap';
+import { Image } from 'react-bootstrap';
 
 class MainBox extends Component {
     render(){
@@ -17,9 +17,9 @@ class MainBox extends Component {
                     </div>
                     <div className="mainBOX">   
                         <div className= "Content">
-                            <img src={nyuLogo} className="nyu" alt='nyuLogo' />
+                            <Image src={nyuLogo} className="nyu" alt='nyuLogo' responsive/>
                             <span>x</span>
-                            <img src={twitterLogo} className="tweet" alt='twitterLogo' />
+                            <Image src={twitterLogo} className="tweet" alt='twitterLogo' responsive/>
                         </div>
                     </div>   
                     <div className="right">
