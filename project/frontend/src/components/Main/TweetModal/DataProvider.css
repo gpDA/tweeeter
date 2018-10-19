@@ -1,0 +1,20 @@
+.bts{
+    display: flex;
+    justify-content: center;
+}
+.active{
+    background: #350356;
+    top: 4px;
+    box-shadow: 1px 1px #350356;
+    color: #fff;
+    transform: scale(0.95);
+}
+.btn {
+    border: 1px solid #350356;
+    border-radius: 0.4em;
+    margin: 0.1em;
+}
+.btn:hover{
+    background: #8652a8;
+    color: white;
+}

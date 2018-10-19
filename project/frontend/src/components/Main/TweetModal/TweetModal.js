@@ -4,22 +4,24 @@ import key from "weak-key";
 
 import './TweetModal.css';
 import Aux from '../../../hoc/Aux/Aux';
+
+
 const TweetModal = ({ data }) =>{
+
     return (<Aux>
           {data.map(el => {
               console.log(el);
             return (
-
     <div className="container"> 
             
             <div className="heading"></div>
             <header >
                 
                 <div className="bio" key={el.id}>
-                    <img src={el.background} alt="background" className="bg"></img>
+                    <img src={el.background} alt="background" className="bg" />
                 </div>
                 <div className="avatarcontainer">
-                    <img src={el.img}  alt="avatar" className="avatar"></img>                    
+                    <img src={el.img}  alt="avatar" className="avatar" />
                     <div className="hover">
                         <div className="icon-twitter"></div>                    
                     </div>
@@ -32,6 +34,8 @@ const TweetModal = ({ data }) =>{
                     <p>{el.text}</p>
                 </div>            
                 <div className="data">   
+                    <span className="name">Name : {el.name} </span>
+                    
                     <ul>
                         <li>
                             {el.retweet}
@@ -40,18 +44,13 @@ const TweetModal = ({ data }) =>{
                         <li>
                             {el.favorite}
                             <span>Favorite</span>
-                        </li>
-                        <li>
-                            {el.name}
-                            <span>Name</span>
-                        </li>                        
+                        </li>                       
                     </ul>                          
                 </div>  
             </div>  
             <div className='bottom'>
                 posted @ 
                     {el.location} <br/>
-                    {el.year} {el.month}. {el.date} at {el.hour} {el.min}                
                 </div>              
             </div>                   
           )}

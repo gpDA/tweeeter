@@ -21,7 +21,9 @@ header {
 .twContainer{
     min-height: 800px;
     max-height: 800px;
-    width: auto;
+    display: flex;
+    justify-content: center;
+
 }
 .container {
     width: 300px;
@@ -118,11 +120,18 @@ header {
 .data {
     margin-top: .6em;
     color: #81878b; 
-    min-height: 6em;
-    max-height: 6em;    
+    min-height: 8em;
+    max-height: 8em;   
+}
+.name{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 .data li {
-    width: 32%;
+    width: 50%;
     text-align: center;
     display: inline-block;
     font-size: 1.5em;
