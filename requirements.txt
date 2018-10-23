@@ -20,3 +20,5 @@ npm install file-loader --save-dev
 npm install --save react-router-redux
 npm install url-loader file-loader --save-dev
 npm install --save prop-types
+npm install react-chartjs-2 chart.js --save #chart js
+#npm install --save chart.js@^1.1.1 react react-dom #chart js
