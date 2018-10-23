@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import TweetModal from '../TweetModal/TweetModal';
 import Aux from '../../../hoc/Aux/Aux';
+
 import Spinner from '../Spinner/Spinner'
 import './TweetModal.css';
 import './DataProvider.css';
+import MainBox from '../../Landing/MainBox/MainBox';
 import { Button } from 'react-bootstrap';
-class DataProvider extends Component {
+class DataProvider extends Component { 
   static propTypes = {
     endpoint: PropTypes.string.isRequired,
     render: PropTypes.func.isRequired
@@ -64,6 +66,8 @@ class DataProvider extends Component {
     }
     return (
       <Aux>
+        <MainBox 
+            />        
         <div className="bts">
           <Button id="4" onClick={(e) => this.onButtonClicked(e,"all")} >All #NYU tweets</Button>        
           <Button id="1" onClick={(e) => this.onButtonClicked(e,"popular")} >Most Popular #NYU tweet</Button>
