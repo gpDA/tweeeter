@@ -89,12 +89,16 @@ class Chart extends Component{
                   ]                
             },
             heatmapData:{
-                xLabels: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-                yLabels: ['1am','2am','3am'],
+                yLabels: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+                xLabels: ['1am','2am','3am','4am','5am','6am','7am','8am','9am','10am','11am','noon','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm','10pm','11pm','midnight'],
                 data:[
-                    [1,2,3,4,5,6,7],
-                    [1,2,3,4,5,6,7],
-                    [1,2,3,4,5,6,7]
+                    [6,2,2,0,3,4,3,7,4,4,6,4,4,4,7,5,6,12,4,11,0,4,2,1],
+                    [4,8,0,0,0,0,0,1,4,2,3,4,4,6,5,10,7,13,10,3,2,5,7,5],
+                    [1,3,6,7,5,1,1,0,5,0,2,2,4,8,4,5,18,10,17,22,80,60,32,6],
+                    [52,57,46,52,18,80,19,79,27,71,18,80,10,89,24,74,7,92,99,34,26,21,18,41],
+                    [23,12,21,13,26,17,39,16,24,28,20,25,23,16,30,56,13,21,40,30,11,11,16,3],
+                    [10,12,9,12,8,10,9,22,14,8,11,12,0,1,38,25,27,9,11,15,0,16,15,16],
+                    [8,4,2,5,4,1,6,6,8,7,10,4,5,7,12,16,12,12,12,13,9,1,4,15]
                 ]
             },            
 
@@ -123,6 +127,8 @@ class Chart extends Component{
                 <ReactHeatmap
                     xLabels={this.state.heatmapData.xLabels}
                     yLabels={this.state.heatmapData.yLabels}
+                    yLabelTextAlign={"right"}
+                    xLabelsLocation={"bottom"}
                     data={this.state.heatmapData.data}
                 />
             </div>
