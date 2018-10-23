@@ -4,6 +4,7 @@ import key from "weak-key";
 import './Chart.css';
 import Aux from '../../../hoc/Aux/Aux';
 import {Doughnut, Line} from 'react-chartjs-2';
+import ReactHeatmap from 'react-heatmap-grid';
 
 class Chart extends Component{
     constructor(props){
@@ -87,6 +88,15 @@ class Chart extends Component{
                     }
                   ]                
             },
+            heatmapData:{
+                xLabels: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                yLabels: ['1am','2am','3am'],
+                data:[
+                    [1,2,3,4,5,6,7],
+                    [1,2,3,4,5,6,7],
+                    [1,2,3,4,5,6,7]
+                ]
+            },            
 
         }
     }
@@ -109,7 +119,12 @@ class Chart extends Component{
                 />
                 <Line 
                     data={this.state.lineData}
-                />                
+                /> 
+                <ReactHeatmap
+                    xLabels={this.state.heatmapData.xLabels}
+                    yLabels={this.state.heatmapData.yLabels}
+                    data={this.state.heatmapData.data}
+                />
             </div>
         )
     }
