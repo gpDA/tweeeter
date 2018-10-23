@@ -106,24 +106,31 @@ class Chart extends Component{
     }
     render(){
         return(
-            <div className="chart">
-                <Doughnut 
+            <div className="charts">
+            <div className="dought">
+                <Doughnut
                     data={this.state.piechartData}
+                    width={1000}
+                    height={400}
                     options={{
+                        maintainAspectRatio: false,
                         title:{
                             display: true,
                             text: 'helwrnkldsf',
                             fontSize: 15
                         },
-                        legnd:{
-                            display: true,
-                            position:'right'
+                        legend:{
+                            display: false,
                         }
                     }}
                 />
+            </div>
+            <div className="line">
                 <Line 
                     data={this.state.lineData}
                 /> 
+            </div>
+            <div className="heapmap">
                 <ReactHeatmap
                     xLabels={this.state.heatmapData.xLabels}
                     yLabels={this.state.heatmapData.yLabels}
@@ -131,6 +138,7 @@ class Chart extends Component{
                     xLabelsLocation={"bottom"}
                     data={this.state.heatmapData.data}
                 />
+            </div>
             </div>
         )
     }
