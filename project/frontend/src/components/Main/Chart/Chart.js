@@ -63,28 +63,28 @@ class Chart extends Component{
                 ]
             },
             lineData:{
-                labels: ['English', 'Dutch', 'Spanish', 'Russian', 'Turkish', 'Portuguese', 'Indonesian','Japanese','Thai','Itlian','Arabic','French','Polish','Ukranian','Vietnamese','Chinese','German','Romanian','Unknown','Hungarian','Czech'],
+                labels: ['Dutch', 'Spanish', 'Russian', 'Turkish', 'Portuguese', 'English', 'Indonesian','Japanese','Thai','Itlian','Arabic','French','Polish','Ukranian','Vietnamese','Chinese','German','Romanian','Unknown','Hungarian','Czech'],
                 datasets: [
                     {
-                      label: 'My First dataset',
+                      label: 'Language distributions among #NYU tweets',
                       fill: false,
                       lineTension: 0.1,
-                      backgroundColor: 'rgba(75,192,192,0.4)',
-                      borderColor: 'rgba(75,192,192,1)',
+                      backgroundColor: 'rgb(87, 6, 140, 1)',
+                      borderColor: 'rgb(87, 6, 140, 1)',
                       borderCapStyle: 'butt',
                       borderDash: [],
                       borderDashOffset: 0.0,
                       borderJoinStyle: 'miter',
-                      pointBorderColor: 'rgba(75,192,192,1)',
+                      pointBorderColor: 'rgb(87, 6, 140, 1)',
                       pointBackgroundColor: '#fff',
                       pointBorderWidth: 1,
                       pointHoverRadius: 5,
-                      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                      pointHoverBorderColor: 'rgba(220,220,220,1)',
+                      pointHoverBackgroundColor: 'rgb(87, 6, 140, 1)',
+                      pointHoverBorderColor: 'rgb(87, 6, 140, 1)',
                       pointHoverBorderWidth: 2,
                       pointRadius: 1,
                       pointHitRadius: 10,
-                      data: [1691, 1, 14, 838, 96, 4, 115, 3, 3, 12, 5, 11, 1, 35, 11, 1, 4, 2, 3, 1, 1]
+                      data: [1, 14, 838, 96, 4, 1691,115, 3, 3, 12, 5, 11, 1, 35, 11, 1, 4, 2, 3, 1, 1]
                     }
                   ]                
             },
@@ -116,11 +116,11 @@ class Chart extends Component{
                         maintainAspectRatio: false,
                         title:{
                             display: true,
-                            text: 'helwrnkldsf',
+                            text: 'Number of tweets by NYU schools',
                             fontSize: 15
                         },
                         legend:{
-                            display: false,
+                            display: true,
                         }
                     }}
                 />
@@ -131,11 +131,20 @@ class Chart extends Component{
                 /> 
             </div>
             <div className="heapmap">
+                <div className='wrapper'>
+                    <span>0</span> <span className="heatmap_legend"></span> <span> 99 tweets</span>
+                </div>
                 <ReactHeatmap
                     xLabels={this.state.heatmapData.xLabels}
                     yLabels={this.state.heatmapData.yLabels}
                     yLabelTextAlign={"right"}
                     xLabelsLocation={"bottom"}
+                    onMouseEnter={() => alert(`hi`)}
+                    cellStyle={(background, value, min, max, data, x, y) => ({
+                    background: `rgb(87, 6, 140, ${1 - (max - value) / (max - min)})`,
+                    fontSize: "10px",
+                    })}
+                    cellRender={value => value && `${value}`}
                     data={this.state.heatmapData.data}
                 />
             </div>
