@@ -7,25 +7,27 @@ from rest_framework import permissions, viewsets
 from django.http import JsonResponse
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
-
+from rest_framework.response import Response
 import tweepy
 from tweepy.auth import OAuthHandler
 from django.forms.models import model_to_dict
 
-class TweetSeries(viewsets.ModelViewSet):
-    serializer_class = TweetSerializer
-    queryset = Tweet.objects.all()
+#viewsets.ModelViewSet
+class TweetSeries(APIView):
+    def get(self, request):
+        queryset = Tweet.objects.all()
+        serializer= TweetSerializer(queryset, many=True)
+        return Response(serializer.data)
 
 
 class TweetView(APIView):
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAdminUser,)
 
     def get(self, request, *args, **kwargs):
         auth = OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
         auth.set_access_token(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth, wait_on_rate_limit=True)
 
-        
         dic = {}
         result = []
 
@@ -133,4 +135,4 @@ class TweetView(APIView):
 
             dta = model_to_dict(obj)
             result.append(dta)
-        return JsonResponse(result, safe=False)        
+        return JsonResponse(result, safe=False)

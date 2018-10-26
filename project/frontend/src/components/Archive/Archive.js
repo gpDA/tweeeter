@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-//import styles from './MainBox.css';
 import Aux from '../../hoc/Aux/Aux';
-import MainBox from '../Landing/MainBox/MainBox';
+import DataProvider from '../Archive/DataProvider';
+import ArchiveModal from '../Archive/ArchiveModal';
 class Archive extends Component {
     render(){
-        return (
+        return(
             <Aux>
-                <MainBox 
-                    />            
-                <h1>TO BE MADE</h1>
+                <DataProvider endpoint="/api/archive/" 
+                render={data => <ArchiveModal data={data} />} />
             </Aux>
         )
     }
+
+
+
 }
 
 export default Archive;

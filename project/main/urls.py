@@ -3,5 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('api/tweet/', views.TweetView.as_view() ),
+    path('api/tweet/', views.TweetView.as_view()),
+    path('api/archive/', views.TweetSeries.as_view()),
 ]
