@@ -75,7 +75,7 @@ class DataProvider extends Component {
           <Button id="3" onClick={(e) => this.onButtonClicked(e,"recent")} >Most Recent #NYU tweet</Button>
         </div>
         { loaded ?
-          (<div className="twContainer">
+          (<div className="archiveContainer">
             <ArchiveModal data={arr} />      
           </div>)
           : (<Spinner />)
