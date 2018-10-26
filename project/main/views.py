@@ -10,6 +10,12 @@ from django.core.exceptions import ObjectDoesNotExist
 
 import tweepy
 from tweepy.auth import OAuthHandler
+from django.forms.models import model_to_dict
+
+class TweetSeries(viewsets.ModelViewSet):
+    serializer_class = TweetSerializer
+    queryset = Tweet.objects.all()
+
 
 class TweetView(APIView):
     permission_classes = (permissions.AllowAny,)
@@ -73,8 +79,8 @@ class TweetView(APIView):
             popYEAR_data = popCREATED_data[5]
             popRETWEET_data = json_dataPOP['retweet_count'] #retweet_count
             popFAVORITE_data = json_dataPOP['favorite_count'] #favorite_count
-            popIMGURL_data = json_dataPOP['user']['profile_image_url'] #              
-            popBGURL_data = json_dataPOP['user']['profile_background_image_url'] #                
+            popIMGURL_data = json_dataPOP['user']['profile_image_url'] #
+            popBGURL_data = json_dataPOP['user']['profile_background_image_url'] #
 
             dicPOP = {'type': 'popular', 'text': popTEXT_data, 'name': popNAME_data,
                 'username': popUSERNAME_data, 'location': popLOCATION_data, 'day': popDAY_data,
@@ -116,8 +122,15 @@ class TweetView(APIView):
 
         #print('dicPOP', dicPOP)
         #print(dic)
-        
-        result.append(dicPOP)
-        result.append(dicNEAR)
-        result.append(dicREC)
-        return JsonResponse(result, safe=False)
+
+        for _ , v0 in dic.items():
+            #created True / False
+            obj, created = Tweet.objects.get_or_create(type = v0['type'], text = v0['text'], name = v0['name'],
+                username = v0['username'], location = v0['location'], day = v0['day'],
+                month = v0['month'], date = v0['date'], hour = v0['hour'], min = v0['min'],
+                year = v0['year'], retweet = v0['retweet'], favorite = v0['favorite'],
+                img = v0['img'], background = v0['background'])
+
+            dta = model_to_dict(obj)
+            result.append(dta)
+        return JsonResponse(result, safe=False)        
