@@ -34,6 +34,12 @@ ACCESS_TOKEN = config("ACCESS_TOKEN")
 ACCESS_TOKEN_SECRET = config("ACCESS_TOKEN_SECRET")
 
 # Application definition
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -49,6 +55,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware', #cache
+    'django.middleware.cache.FetchFromCacheMiddleware', #cache
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

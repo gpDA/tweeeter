@@ -1,11 +1,5 @@
 from django.db import models
 
-class Main(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    message = models.CharField(max_length=300)
-    created_at = models.DateTimeField(auto_now_add=True)
-
 class Tweet(models.Model):
     type = models.CharField(max_length = 300, default='type')
     text = models.CharField(max_length = 1000, default='text')
@@ -23,9 +17,7 @@ class Tweet(models.Model):
     #django.db.utils.IntegrityError: NOT NULL constraint failed: main_tweet.background
     background = models.URLField(max_length = 500, default='https://www.cbronline.com/wp-content/uploads/2016/06/twitter2.png')
     img =  models.URLField(max_length = 500, default='https://yt3.ggpht.com/a-/AN66SAyn4D2lHHaONid5n_y_ZIsyInEUOoktizKFew=s900-mo-c-c0xffffffff-rj-k-no')
-    created_at = models.DateTimeField(auto_now_add=True, blank=True)
-    
-    
+    created_at = models.DateTimeField(auto_now_add=True, blank=True) 
 
     def __str__(self):
         return "{}".format(self.type)

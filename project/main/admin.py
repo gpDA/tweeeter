@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from .models import Tweet, Main
+from .models import Tweet
 
-admin.site.register(Main)
 admin.site.register(Tweet)
 
 

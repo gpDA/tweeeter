@@ -1,10 +1,5 @@
 from rest_framework import serializers
-from main.models import Main, Tweet
-
-class MainSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Main
-        fields = ('id', 'name', 'email', 'message')
+from main.models import Tweet
 
 class TweetSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,4 +1,4 @@
-from main.models import Main, Tweet
+from main.models import Tweet
 from main.serializers import TweetSerializer
 from . import handlingdata as hd
 
