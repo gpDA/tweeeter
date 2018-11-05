@@ -6,3 +6,7 @@ project/frontend/__pycache__
 project/main/__pycache__
 project/project/__pycache__
 .env
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
