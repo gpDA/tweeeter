@@ -66,8 +66,8 @@ class DataProvider extends Component {
     }
     return (
       <Aux>
-        <MainBox 
-            />        
+        <MainBox
+            />
         <div className="bts">
           <Button id="4" onClick={(e) => this.onButtonClicked(e,"all")} >All #NYU tweets</Button>        
           <Button id="1" onClick={(e) => this.onButtonClicked(e,"popular")} >Most Popular #NYU tweet</Button>
