@@ -6,6 +6,9 @@ Find out NYU in twitter ! I love my school and I find tweets with #NYU in many d
  Also, request API and get the response is so important for the web development in todays. So I used twitter REST API to
  get tweets with #NYU. I request Twitter API using tweepy (provided for Django) in 3 different result_type 1) recent 2) popular 3) geocode (within 1 km away from Washington Square Park near NYU)
  
+VIDEO DEMO :
+[https://www.youtube.com/watch?v=xPcY2o0Yk8c]
+
 SAMPLE IMAGE :
 [https://user-images.githubusercontent.com/29666846/46186092-d9da6e80-c2aa-11e8-9232-74f9c0ea42af.png]
 
