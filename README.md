@@ -10,7 +10,7 @@
 
 # OBJECTIVE
 
-#### hashtagNYU is a web-app for students at New York University to see NYU communities at Twitter. I've wanted to see how and what poeple talk about NYU on Twitter. But, I found it hard to find it at once. So hashtagNYU was created to show the contents of Tweets regarding NYU and show the stastics regarding NYU tweets such as 
+#### hashtagNYU is a web-app for students at New York University to see NYU communities at Twitter. I've wanted to see how and what people talk about NYU on Twitter. But, I found it hard to find it at once. So hashtagNYU was created to show the contents of Tweets regarding NYU and show the stastics regarding NYU tweets such as 
 * which school has posted the most Tweets with its school names
 * which language NYU tweets has been posted most
 * The distribution of time that tweets regarding NYU has been posted
