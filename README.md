@@ -10,7 +10,7 @@ VIDEO DEMO :
 [https://www.youtube.com/watch?v=xPcY2o0Yk8c]
 
 SAMPLE IMAGE :
-[https://user-images.githubusercontent.com/29666846/46186092-d9da6e80-c2aa-11e8-9232-74f9c0ea42af.png]
+![SAMPLE IMAGE](https://user-images.githubusercontent.com/29666846/46186092-d9da6e80-c2aa-11e8-9232-74f9c0ea42af.png)
 
 sample REACT
 [https://github.com/gpDA/hashtagNYU/blob/069c806d57601b6be2a54058a9c51eba456e44a2/project/frontend/src/components/Main/TweetModal/TweetModal.js#L6-L25]
