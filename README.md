@@ -5,7 +5,7 @@
 # VIDEO DEMO
 
 
-[![hashtagNYU video Demo](https://img.youtube.com/vi/duJi753-YgE/0.jpg)](https://www.youtube.com/watch?v=xPcY2o0Yk8c)
+[![hashtagNYU video Demo](https://img.youtube.com/vi/xPcY2o0Yk8c/0.jpg)](https://www.youtube.com/watch?v=xPcY2o0Yk8c)
 
 
 # OBJECTIVE
