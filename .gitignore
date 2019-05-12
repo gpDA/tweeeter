@@ -7,6 +7,7 @@ project/main/__pycache__
 project/project/__pycache__
 .env
 requirements.txt
+ENV/*
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
