@@ -39,7 +39,8 @@
 # RUN CODE
 
 ```
-source ./bin/active
+(virtualenv ENV)
+source ENV/bin/activate
 pip install -r requirements.txt  // PIP INSTALL EVERYTHING IN requirements.txt
 npm run dev
 cd project
